@@ -41,9 +41,9 @@ exports[`Profile should match the snapshot 1`] = `
     style={
       Object {
         "alignItems": "center",
-        "borderColor": "rgb(216, 216, 216)",
-        "borderRadius": 5,
-        "borderWidth": 1,
+        "backgroundColor": "#0578ff",
+        "borderRadius": 4,
+        "color": "#fff",
         "justifyContent": "center",
         "opacity": 1,
         "padding": 10,
@@ -55,13 +55,13 @@ exports[`Profile should match the snapshot 1`] = `
       style={
         Array [
           Object {
-            "color": "rgb(28, 28, 30)",
-          },
-          Object {
             "fontSize": 16,
             "fontWeight": "700",
           },
           null,
+          Object {
+            "color": "#fff",
+          },
         ]
       }
     >
