@@ -4,135 +4,186 @@ exports[`Login should match the snapshot 1`] = `
 <View
   style={
     Object {
-      "alignItems": "center",
       "flex": 1,
-      "justifyContent": "center",
-      "paddingHorizontal": 40,
     }
   }
 >
   <View
+    accessibilityIgnoresInvertColors={true}
     style={
-      Array [
-        Object {
-          "borderRadius": 5,
-          "padding": 20,
-          "width": "100%",
-        },
-        Object {
-          "elevation": 5,
-          "shadowColor": "#000000",
-          "shadowOffset": Object {
-            "height": 2,
-            "width": 0,
-          },
-          "shadowOpacity": 0.25,
-          "shadowRadius": 3.84,
-        },
-        Object {
-          "backgroundColor": "rgb(0, 122, 255)",
-        },
-      ]
+      Object {
+        "flex": 1,
+        "justifyContent": "center",
+        "resizeMode": "cover",
+        "right": 0,
+      }
     }
   >
-    <TextInput
-      accessibilityHint="Enter your username"
-      accessibilityLabel="Username"
-      allowFontScaling={true}
-      autoCapitalize="none"
-      onChangeText={[Function]}
-      placeholder="Username"
-      rejectResponderTermination={true}
+    <Image
+      source={
+        Object {
+          "testUri": "../../../src/assets/img/neonBg.jpeg",
+        }
+      }
       style={
         Array [
           Object {
-            "color": "rgb(28, 28, 30)",
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
           },
           Object {
-            "fontSize": 16,
-            "fontWeight": "400",
+            "height": undefined,
+            "width": undefined,
           },
-          Object {
-            "borderBottomWidth": 0.5,
-            "marginVertical": 15,
-            "paddingVertical": 5,
-          },
-          null,
+          undefined,
         ]
       }
-      underlineColorAndroid="transparent"
-      value=""
-    />
-    <TextInput
-      accessibilityHint="Enter your password"
-      accessibilityLabel="Password"
-      allowFontScaling={true}
-      autoCapitalize="none"
-      onChangeText={[Function]}
-      placeholder="Password"
-      rejectResponderTermination={true}
-      secureTextEntry={true}
-      style={
-        Array [
-          Object {
-            "color": "rgb(28, 28, 30)",
-          },
-          Object {
-            "fontSize": 16,
-            "fontWeight": "400",
-          },
-          Object {
-            "borderBottomWidth": 0.5,
-            "marginVertical": 15,
-            "paddingVertical": 5,
-          },
-          null,
-        ]
-      }
-      textContentType="password"
-      underlineColorAndroid="transparent"
-      value=""
     />
     <View
-      accessible={true}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
       style={
         Object {
-          "alignItems": "center",
-          "borderColor": "rgb(216, 216, 216)",
-          "borderRadius": 5,
-          "borderWidth": 1,
-          "justifyContent": "center",
-          "marginTop": 20,
-          "opacity": 1,
-          "padding": 10,
-          "width": "100%",
+          "padding": 30,
         }
       }
     >
-      <Text
+      <View
         style={
           Array [
             Object {
-              "color": "rgb(28, 28, 30)",
+              "backgroundColor": "rgba(15, 15, 15, 0.85)",
+              "borderRadius": 12,
+              "padding": 20,
+              "width": "100%",
             },
             Object {
-              "fontSize": 16,
-              "fontWeight": "700",
+              "elevation": 5,
+              "shadowColor": "#000000",
+              "shadowOffset": Object {
+                "height": 2,
+                "width": 0,
+              },
+              "shadowOpacity": 0.25,
+              "shadowRadius": 3.84,
             },
-            null,
           ]
         }
       >
-        Login
-      </Text>
+        <Text
+          style={
+            Object {
+              "color": "#fff",
+              "fontSize": 75,
+              "fontWeight": "bold",
+              "marginBottom": 20,
+              "textAlign": "center",
+            }
+          }
+        >
+          Moovy
+        </Text>
+        <TextInput
+          accessibilityHint="Enter your username"
+          accessibilityLabel="Username"
+          allowFontScaling={true}
+          autoCapitalize="none"
+          onChangeText={[Function]}
+          placeholder="Username"
+          rejectResponderTermination={true}
+          style={
+            Array [
+              Object {
+                "fontSize": 16,
+                "fontWeight": "400",
+              },
+              Object {
+                "backgroundColor": "#dfe3ec",
+                "borderBottomWidth": 0.5,
+                "borderRadius": 4,
+                "marginVertical": 15,
+                "paddingHorizontal": 15,
+                "paddingVertical": 5,
+              },
+              null,
+            ]
+          }
+          underlineColorAndroid="transparent"
+          value=""
+        />
+        <TextInput
+          accessibilityHint="Enter your password"
+          accessibilityLabel="Password"
+          allowFontScaling={true}
+          autoCapitalize="none"
+          onChangeText={[Function]}
+          placeholder="Password"
+          rejectResponderTermination={true}
+          secureTextEntry={true}
+          style={
+            Array [
+              Object {
+                "fontSize": 16,
+                "fontWeight": "400",
+              },
+              Object {
+                "backgroundColor": "#dfe3ec",
+                "borderBottomWidth": 0.5,
+                "borderRadius": 4,
+                "marginVertical": 15,
+                "paddingHorizontal": 15,
+                "paddingVertical": 5,
+              },
+              null,
+            ]
+          }
+          textContentType="password"
+          underlineColorAndroid="transparent"
+          value=""
+        />
+        <View
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#0578ff",
+              "borderRadius": 4,
+              "color": "#fff",
+              "justifyContent": "center",
+              "marginTop": 20,
+              "opacity": 1,
+              "padding": 10,
+              "width": "100%",
+            }
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "fontSize": 16,
+                  "fontWeight": "700",
+                },
+                null,
+                Object {
+                  "color": "#fff",
+                },
+              ]
+            }
+          >
+            Login
+          </Text>
+        </View>
+      </View>
     </View>
   </View>
 </View>
