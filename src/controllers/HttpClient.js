@@ -6,6 +6,7 @@ const client = axios.create({
   baseURL: Config.API_BASE_URL,
   headers: {
     'Content-Type': 'application/json',
+    Authorization: `Bearer ${Config.API_TOKEN}`,
   },
 });
 
