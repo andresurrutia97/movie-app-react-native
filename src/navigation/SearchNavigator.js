@@ -5,15 +5,10 @@ import { Home } from '@/screens';
 
 const Stack = createNativeStackNavigator();
 
-export function HomeNavigator() {
+export function SearchNavigator() {
   return (
-    <Stack.Navigator
-      screenOptions={{
-        headerShown: false,
-      }}
-    >
-      <Stack.Screen name={NAVIGATION.home} component={Home} />
-      <Stack.Screen name={NAVIGATION.movie} component={Home} />
+    <Stack.Navigator>
+      <Stack.Screen name={NAVIGATION.search} component={Home} />
     </Stack.Navigator>
   );
 }
