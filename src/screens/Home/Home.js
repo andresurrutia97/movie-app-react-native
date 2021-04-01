@@ -1,32 +1,34 @@
-import { useTheme } from '@react-navigation/native';
 import React, { useEffect } from 'react';
-import { Text, View } from 'react-native';
-import { Config } from 'react-native-config';
 import { useSelector, useDispatch } from 'react-redux';
-import { TextStyles } from '@/theme';
-import { getUser } from '@/selectors/UserSelectors';
+import { View, ScrollView } from 'react-native';
+
+import NowPlaying from './NowPlaying/NowPlaying';
 import { styles } from '@/screens/Home/Home.styles';
-import { strings } from '@/localization';
-import { fetchNowPlaying } from '@/actions/HomeActions';
+import { fetchPopular } from '@/actions/HomeActions';
+import Carousel from '@/components/Carousel';
 
 export function Home() {
-  const { colors } = useTheme();
-  const user = useSelector(getUser);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchNowPlaying());
+    dispatch(fetchPopular());
   }, [dispatch]);
+
+  const { popular, isFetchingPopular, popularError } = useSelector(
+    state => state.home
+  );
 
   return (
     <View style={styles.container}>
-      <Text style={[TextStyles.title, { color: colors.text }]}>
-        {strings.home.message} {user?.username}
-      </Text>
-      <Text style={[TextStyles.text, { color: colors.text }]}>
-        {strings.home.variant} {Config.BUILD_VARIANT}
-      </Text>
+      <ScrollView>
+        <NowPlaying />
+        <Carousel
+          title="Trending Now"
+          movies={popular}
+          isFetching={isFetchingPopular}
+          error={popularError}
+        />
+      </ScrollView>
     </View>
   );
 }

@@ -4,6 +4,10 @@ const initialState = {
   nowPlaying: null,
   isFetchingNowPlaying: false,
   nowPlayingError: null,
+
+  popular: null,
+  isFetchingPopular: false,
+  popularError: null,
 };
 
 export const homeReducer = (state = initialState, { payload, type }) => {
@@ -28,6 +32,27 @@ export const homeReducer = (state = initialState, { payload, type }) => {
         nowPlaying: null,
         isFetchingNowPlaying: false,
         nowPlayingError: payload,
+      };
+    case TYPES.FETCH_POPULAR_START:
+      return {
+        ...state,
+        popular: null,
+        isFetchingPopular: true,
+        popularError: null,
+      };
+    case TYPES.FETCH_POPULAR_SUCCESS:
+      return {
+        ...state,
+        popular: payload,
+        isFetchingPopular: false,
+        popularError: null,
+      };
+    case TYPES.FETCH_POPULAR_FAILURE:
+      return {
+        ...state,
+        popular: null,
+        isFetchingPopular: false,
+        popularError: payload,
       };
     default:
       return state;
