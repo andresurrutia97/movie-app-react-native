@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import { StyleSheet, ScrollView, Text, Image, View } from 'react-native';
 
 import { Colors } from '@/theme/Colors';
+import Spinner from '@/components/Spinner';
+import { ErrorView } from '@/components/ErrorView';
 import { getImageUrl } from '@/helpers/urls';
+import { ERRORS } from '@/constants';
 
 const styles = StyleSheet.create({
   container: { marginVertical: 30, marginLeft: 20 },
@@ -27,15 +30,15 @@ const styles = StyleSheet.create({
 
 const Carousel = ({ movies, isFetching, error, title }) => {
   if (isFetching) {
-    return <Text>Loading...</Text>;
+    return <Spinner />;
   }
   if (error) {
-    return <Text>Uh oh, something went wrong!</Text>;
+    return <ErrorView small errors={[ERRORS.main]} />;
   }
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{title}</Text>
+      {title && <Text style={styles.title}>{title}</Text>}
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         {movies &&
           movies.map(movie => (

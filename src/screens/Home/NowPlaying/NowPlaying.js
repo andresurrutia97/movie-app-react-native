@@ -1,16 +1,19 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Text, View, ImageBackground } from 'react-native';
+import { View, ImageBackground } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import LinearGradient from 'react-native-linear-gradient';
 
 import { styles } from './NowPlaying.styles';
 import Genres from '@/components/Genres';
 import IconButton from '@/components/IconButton';
+import Spinner from '@/components/Spinner';
+import { ErrorView } from '@/components/ErrorView';
 import { fetchNowPlaying } from '@/actions/HomeActions';
 import { getImageUrl } from '@/helpers/urls';
+import { ERRORS } from '@/constants';
 
-const NowPlaying = () => {
+const NowPlaying = ({ navigation }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -22,16 +25,22 @@ const NowPlaying = () => {
   );
 
   if (isFetchingNowPlaying) {
-    return <Text>Loading...</Text>;
+    return <Spinner />;
   }
   if (nowPlayingError) {
-    return <Text>Uh oh, something went wrong!</Text>;
+    return <ErrorView errors={[ERRORS.main]} small />;
   }
 
-  const backDrop = getImageUrl(nowPlaying.poster_path);
+  const goToMovie = id => {
+    navigation.navigate('Movie', {
+      movieId: id,
+    });
+  };
+
+  const poster = getImageUrl(nowPlaying.poster_path);
 
   return (
-    <ImageBackground source={{ uri: backDrop }} style={styles.backDrop}>
+    <ImageBackground source={{ uri: poster }} style={styles.poster}>
       <View style={styles.nowPlaying}>
         <LinearGradient
           colors={['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 0.7)', '#000']}
@@ -39,7 +48,11 @@ const NowPlaying = () => {
         >
           <Genres genres={nowPlaying.genres} />
           <View style={styles.actions}>
-            <IconButton icon="list" title="My List" />
+            <IconButton
+              icon="list"
+              title="My List"
+              onPress={() => goToMovie(nowPlaying.id)}
+            />
             <IconButton icon="list" title="Play" />
             <IconButton icon="list" title="Info" />
           </View>
@@ -50,7 +63,7 @@ const NowPlaying = () => {
 };
 
 NowPlaying.propTypes = {
-  movieData: PropTypes.shape(),
+  navigation: PropTypes.shape().isRequired,
 };
 
 export default NowPlaying;

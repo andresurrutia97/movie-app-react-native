@@ -1,10 +1,9 @@
 import { StyleSheet, Dimensions } from 'react-native';
-import { Colors } from '@/theme';
 
 const window = Dimensions.get('window');
 
 export const styles = StyleSheet.create({
-  backDrop: { width: window.width, height: 600 },
+  poster: { width: window.width, height: 600 },
 
   title: { color: '#fff' },
 

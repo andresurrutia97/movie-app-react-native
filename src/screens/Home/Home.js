@@ -7,7 +7,7 @@ import { styles } from '@/screens/Home/Home.styles';
 import { fetchPopular } from '@/actions/HomeActions';
 import Carousel from '@/components/Carousel';
 
-export function Home() {
+export function Home({ navigation }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -21,7 +21,7 @@ export function Home() {
   return (
     <View style={styles.container}>
       <ScrollView>
-        <NowPlaying />
+        <NowPlaying navigation={navigation} />
         <Carousel
           title="Trending Now"
           movies={popular}

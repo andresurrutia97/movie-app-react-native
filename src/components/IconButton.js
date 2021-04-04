@@ -22,9 +22,9 @@ const icons = {
   info: '',
 };
 
-const IconButton = ({ icon, title }) => {
+const IconButton = ({ icon, title, ...rest }) => {
   return (
-    <TouchableOpacity style={styles.button}>
+    <TouchableOpacity style={styles.button} {...rest}>
       <Image
         style={styles.icon}
         source={icons[icon]}
@@ -38,6 +38,11 @@ const IconButton = ({ icon, title }) => {
 IconButton.propTypes = {
   icon: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+  onPress: PropTypes.func,
+};
+
+IconButton.defaultProps = {
+  onPress: () => {},
 };
 
 export default IconButton;
