@@ -24,7 +24,7 @@ export const Movie = ({ route }) => {
   const { movie, isFetching, error } = useSelector(state => state.movie);
   const { list } = useSelector(state => state.list);
 
-  if (isFetching) {
+  if (isFetching || !movie) {
     return <Spinner />;
   }
   if (error) {

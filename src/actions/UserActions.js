@@ -1,4 +1,5 @@
 import { UserController } from '@/controllers';
+import { persistor } from '@/store';
 
 export const TYPES = {
   CLEAR_STORE: 'CLEAR_STORE',
@@ -42,6 +43,8 @@ export const logout = () => async dispatch => {
   try {
     await UserController.logout();
   } finally {
+    await persistor.flush();
+    await persistor.purge();
     dispatch(clearStore());
   }
 };

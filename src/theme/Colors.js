@@ -1,6 +1,6 @@
 export const Colors = {
   pink: {
-    primary: '#ff187c',
+    primary: '#ff388e',
   },
   blue: {
     primary: '#0578ff',

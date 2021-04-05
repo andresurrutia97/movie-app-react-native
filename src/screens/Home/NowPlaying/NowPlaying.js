@@ -32,37 +32,41 @@ const NowPlaying = ({ goToMovie }) => {
     return <ErrorView errors={[ERRORS.MAIN]} small />;
   }
 
-  const poster = getImageUrl(nowPlaying.poster_path);
   const isFavorite = list.find(el => el.id === nowPlaying.id);
 
   return (
-    <ImageBackground source={{ uri: poster }} style={styles.poster}>
-      <View style={styles.nowPlaying}>
-        <LinearGradient
-          colors={['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 0.7)', '#000']}
-          style={styles.gradient}
-        >
-          <Genres genres={nowPlaying.genres} />
-          <View style={styles.actions}>
-            <IconButton
-              icon={isFavorite ? addedIcon : addIcon}
-              title="My list"
-              onPress={() => {
-                isFavorite
-                  ? dispatch(removeMovie(nowPlaying.id))
-                  : dispatch(addMovie(nowPlaying));
-              }}
-            />
-            <IconButton icon={playIcon} title="Play" />
-            <IconButton
-              icon={infoIcon}
-              title="Info"
-              onPress={() => goToMovie(nowPlaying.id)}
-            />
-          </View>
-        </LinearGradient>
-      </View>
-    </ImageBackground>
+    nowPlaying && (
+      <ImageBackground
+        source={{ uri: getImageUrl(nowPlaying.poster_path) }}
+        style={styles.poster}
+      >
+        <View style={styles.nowPlaying}>
+          <LinearGradient
+            colors={['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 0.7)', '#000']}
+            style={styles.gradient}
+          >
+            <Genres genres={nowPlaying.genres} />
+            <View style={styles.actions}>
+              <IconButton
+                icon={isFavorite ? addedIcon : addIcon}
+                title="My list"
+                onPress={() => {
+                  isFavorite
+                    ? dispatch(removeMovie(nowPlaying.id))
+                    : dispatch(addMovie(nowPlaying));
+                }}
+              />
+              <IconButton icon={playIcon} title="Play" />
+              <IconButton
+                icon={infoIcon}
+                title="Info"
+                onPress={() => goToMovie(nowPlaying.id)}
+              />
+            </View>
+          </LinearGradient>
+        </View>
+      </ImageBackground>
+    )
   );
 };
 
