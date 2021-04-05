@@ -42,26 +42,28 @@ const Carousel = ({ movies, isFetching, error, title, goToMovie }) => {
   }
 
   return (
-    <View style={styles.container}>
-      {title && <Text style={[styles.title, TextStyles.title]}>{title}</Text>}
-      <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-        {movies &&
-          movies.map(movie => (
-            <TouchableOpacity
-              key={movie.id}
-              onPress={() => goToMovie(movie.id)}
-            >
-              <View style={styles.movieItem}>
-                <Image
-                  source={{ uri: getImageUrl(movie.poster_path) }}
-                  style={styles.poster}
-                  accessibilityIgnoresInvertColors
-                />
-              </View>
-            </TouchableOpacity>
-          ))}
-      </ScrollView>
-    </View>
+    movies.length !== 0 && (
+      <View style={styles.container}>
+        {title && <Text style={[styles.title, TextStyles.title]}>{title}</Text>}
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+          {movies &&
+            movies.map(movie => (
+              <TouchableOpacity
+                key={movie.id}
+                onPress={() => goToMovie(movie.id)}
+              >
+                <View style={styles.movieItem}>
+                  <Image
+                    source={{ uri: getImageUrl(movie.poster_path) }}
+                    style={styles.poster}
+                    accessibilityIgnoresInvertColors
+                  />
+                </View>
+              </TouchableOpacity>
+            ))}
+        </ScrollView>
+      </View>
+    )
   );
 };
 

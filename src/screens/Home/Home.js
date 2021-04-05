@@ -20,6 +20,7 @@ export function Home() {
   const { popular, isFetchingPopular, popularError } = useSelector(
     state => state.home
   );
+  const { list } = useSelector(state => state.list);
 
   const goToMovie = id => {
     navigation.navigate(NAVIGATION.movie, {
@@ -30,6 +31,7 @@ export function Home() {
   return (
     <ScrollView style={styles.container}>
       <NowPlaying navigation={navigation} goToMovie={goToMovie} />
+      <Carousel goToMovie={goToMovie} title="My list" movies={list} />
       <Carousel
         goToMovie={goToMovie}
         title="Trending Now"
