@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { ScrollView, RefreshControl } from 'react-native';
+import { ScrollView, RefreshControl, Image } from 'react-native';
 
 import NowPlaying from './NowPlaying/NowPlaying';
 import { styles } from '@/screens/Home/Home.styles';
@@ -12,6 +12,7 @@ import {
 } from '@/actions/HomeActions';
 import { Carousel } from '@/components';
 import { NAVIGATION } from '@/constants';
+import Logo from '@/assets/img/Logo.png';
 
 export function Home() {
   const dispatch = useDispatch();
@@ -50,7 +51,13 @@ export function Home() {
         <RefreshControl refreshing={refreshing} onRefresh={() => onRefresh()} />
       }
     >
+      <Image
+        style={styles.logo}
+        source={Logo}
+        accessibilityIgnoresInvertColors
+      />
       <NowPlaying navigation={navigation} goToMovie={goToMovie} />
+
       <Carousel goToMovie={goToMovie} title="My list" movies={list} />
       <Carousel
         goToMovie={goToMovie}
