@@ -8,7 +8,7 @@ const persistConfig = {
   key: 'root',
   storage,
   whiteList: ['home', 'list'],
-  blacklist: ['error', 'status'],
+  blacklist: ['error', 'status', 'search'],
 };
 
 const middlewares = [thunk];

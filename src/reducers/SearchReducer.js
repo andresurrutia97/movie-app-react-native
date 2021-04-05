@@ -1,38 +1,38 @@
-import { TYPES } from '@/actions/MovieActions';
+import { TYPES } from '@/actions/SearchActions';
 
 const initialState = {
-  movie: null,
+  movies: null,
   isFetching: false,
   error: null,
 };
 
-export const movieReducer = (state = initialState, { payload, type }) => {
+export const searchReducer = (state = initialState, { payload, type }) => {
   switch (type) {
-    case TYPES.FETCH_MOVIE_START:
+    case TYPES.SEARCH_MOVIE_START:
       return {
         ...state,
-        movie: null,
+        movies: null,
         isFetching: true,
         error: null,
       };
-    case TYPES.FETCH_MOVIE_SUCCESS:
+    case TYPES.SEARCH_MOVIE_SUCCESS:
       return {
         ...state,
-        movie: payload,
+        movies: payload,
         isFetching: false,
         error: null,
       };
-    case TYPES.FETCH_MOVIE_FAILURE:
+    case TYPES.SEARCH_MOVIE_FAILURE:
       return {
         ...state,
-        movie: null,
+        movies: null,
         isFetching: false,
         error: payload,
       };
-    case TYPES.ClEAR_MOVIE:
+    case TYPES.CLEAR_SEARCH:
       return {
         ...state,
-        movie: null,
+        movies: null,
         isFetching: false,
         error: null,
       };

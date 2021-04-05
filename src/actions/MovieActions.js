@@ -6,6 +6,7 @@ export const TYPES = {
   FETCH_MOVIE_START: 'FETCH_MOVIE_START',
   FETCH_MOVIE_SUCCESS: 'FETCH_MOVIE_SUCCESS',
   FETCH_MOVIE_FAILURE: 'FETCH_MOVIE_FAILURE',
+  ClEAR_MOVIE: 'ClEAR_MOVIE',
 };
 
 const fetchMovieStart = () => ({
@@ -23,6 +24,7 @@ const fetchMovieFailure = error => ({
 });
 
 export const fetchMovie = id => async dispatch => {
+  dispatch(clearMovies());
   dispatch(fetchMovieStart());
   try {
     const movie = await movieController.getMovie(id);
@@ -31,3 +33,7 @@ export const fetchMovie = id => async dispatch => {
     dispatch(fetchMovieFailure(error));
   }
 };
+
+export const clearMovies = () => ({
+  type: TYPES.ClEAR_MOVIE,
+});

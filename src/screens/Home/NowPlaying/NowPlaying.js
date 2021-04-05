@@ -5,14 +5,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import LinearGradient from 'react-native-linear-gradient';
 
 import { styles } from './NowPlaying.styles';
-import Genres from '@/components/Genres';
-import IconButton from '@/components/IconButton';
-import Spinner from '@/components/Spinner';
-import { ErrorView } from '@/components/ErrorView';
+import { ErrorView, Spinner, IconButton, Genres } from '@/components';
 import { fetchNowPlayingIfNeeded } from '@/actions/HomeActions';
 import { addMovie, removeMovie } from '@/actions/ListActions';
 import { getImageUrl } from '@/helpers/urls';
 import { ERRORS } from '@/constants';
+import { addIcon, playIcon, infoIcon, addedIcon } from '@/assets';
 
 const NowPlaying = ({ goToMovie }) => {
   const dispatch = useDispatch();
@@ -47,7 +45,7 @@ const NowPlaying = ({ goToMovie }) => {
           <Genres genres={nowPlaying.genres} />
           <View style={styles.actions}>
             <IconButton
-              icon={isFavorite ? 'play' : 'add'}
+              icon={isFavorite ? addedIcon : addIcon}
               title="My list"
               onPress={() => {
                 isFavorite
@@ -55,13 +53,9 @@ const NowPlaying = ({ goToMovie }) => {
                   : dispatch(addMovie(nowPlaying));
               }}
             />
+            <IconButton icon={playIcon} title="Play" />
             <IconButton
-              icon="play"
-              title="Play"
-              onPress={() => dispatch(removeMovie(nowPlaying.id))}
-            />
-            <IconButton
-              icon="info"
+              icon={infoIcon}
               title="Info"
               onPress={() => goToMovie(nowPlaying.id)}
             />

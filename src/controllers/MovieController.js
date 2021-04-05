@@ -21,7 +21,9 @@ export class MovieController {
   };
 
   searchMovie = async name => {
-    const result = await HttpClient.get('/search/movie', { query: name });
+    const result = await HttpClient.get('/search/movie', {
+      params: { query: name },
+    });
     return result;
   };
 }

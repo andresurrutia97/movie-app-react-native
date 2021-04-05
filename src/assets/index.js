@@ -5,3 +5,5 @@ export { default as listIcon } from '@/assets/ic_list/baseline_grade_black_24dp.
 export { default as playIcon } from '@/assets/ic_play/ic_play.png';
 export { default as infoIcon } from '@/assets/ic_info/ic_info.png';
 export { default as addIcon } from '@/assets/ic_add/ic_add.png';
+export { default as addedIcon } from '@/assets/ic_added/ic_added.png';
+export { default as defaultPoster } from '@/assets/img/default.png';

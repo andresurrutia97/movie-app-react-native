@@ -2,6 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useTheme } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet } from 'react-native';
+
 import { TabBarIcon } from '@/components';
 import { NAVIGATION } from '@/constants';
 import { HomeNavigator } from '@/navigation/HomeNavigator';

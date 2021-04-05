@@ -9,11 +9,12 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.black.secondary,
     color: Colors.white,
   },
-  backDrop: { width: window.width, height: 250 },
-  content: { padding: 20 },
+  backDrop: { width: window.width, height: 400 },
+  backDropImg: { borderBottomRightRadius: 180 },
+  content: { padding: 10, marginTop: 30 },
   title: {
     color: Colors.blue.primary,
-    fontSize: 30,
+    fontSize: 28,
     marginBottom: 10,
     fontWeight: 'bold',
   },
@@ -38,5 +39,15 @@ export const styles = StyleSheet.create({
   },
   notAdded: {
     tintColor: Colors.black.primary,
+  },
+  actions: {
+    flexDirection: 'row',
+    position: 'absolute',
+    bottom: -25,
+    left: 0,
+    backgroundColor: Colors.pink.primary,
+    borderRadius: 30,
+    paddingHorizontal: 20,
+    marginHorizontal: 20,
   },
 });

@@ -34,7 +34,7 @@ export const Favorites = () => {
             />
           </TouchableOpacity>
         )}
-        numColumns={2}
+        numColumns={3}
         keyExtractor={item => item.id}
       />
     </View>

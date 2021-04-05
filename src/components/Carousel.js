@@ -10,17 +10,16 @@ import {
 } from 'react-native';
 
 import { Colors, TextStyles } from '@/theme';
-import Spinner from '@/components/Spinner';
-import { ErrorView } from '@/components/ErrorView';
+import { Spinner, ErrorView } from '@/components';
 import { getImageUrl } from '@/helpers/urls';
 import { ERRORS } from '@/constants';
 
 const styles = StyleSheet.create({
-  container: { marginVertical: 30, marginLeft: 20 },
+  container: { marginVertical: 10, marginLeft: 10 },
   movieItem: {
-    width: 140,
-    height: 220,
-    marginRight: 15,
+    width: 110,
+    height: 160,
+    marginRight: 10,
   },
   poster: {
     width: '100%',
@@ -29,7 +28,7 @@ const styles = StyleSheet.create({
   },
   title: {
     color: Colors.white,
-    marginBottom: 15,
+    marginBottom: 10,
   },
 });
 

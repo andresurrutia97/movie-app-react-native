@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { StyleSheet, Text, TouchableOpacity, Image } from 'react-native';
 
 import { Colors, TextStyles } from '@/theme';
-import { addIcon, playIcon, infoIcon } from '@/assets';
 
 const styles = StyleSheet.create({
   button: {
@@ -13,23 +12,17 @@ const styles = StyleSheet.create({
   title: { color: Colors.white },
   icon: {
     tintColor: Colors.white,
-    width: 40,
-    height: 40,
   },
+  standarIcon: { width: 32, height: 32 },
+  smallIcon: { width: 26, height: 26 },
 });
 
-const icons = {
-  add: addIcon,
-  play: playIcon,
-  info: infoIcon,
-};
-
-const IconButton = ({ icon, title, ...rest }) => {
+const IconButton = ({ icon, title, small, ...rest }) => {
   return (
     <TouchableOpacity style={styles.button} {...rest}>
       <Image
-        style={styles.icon}
-        source={icons[icon]}
+        style={[styles.icon, small ? styles.smallIcon : styles.standarIcon]}
+        source={icon}
         accessibilityIgnoresInvertColors={false}
       />
       <Text style={[styles.title, TextStyles.smallText]}>{title}</Text>
@@ -38,13 +31,15 @@ const IconButton = ({ icon, title, ...rest }) => {
 };
 
 IconButton.propTypes = {
-  icon: PropTypes.oneOf(['add', 'play', 'info']).isRequired,
+  icon: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   onPress: PropTypes.func,
+  small: PropTypes.bool,
 };
 
 IconButton.defaultProps = {
   onPress: () => {},
+  small: false,
 };
 
 export default IconButton;

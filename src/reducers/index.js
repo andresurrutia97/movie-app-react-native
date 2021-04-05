@@ -5,6 +5,7 @@ import { userReducer } from '@/reducers/UserReducer';
 import { homeReducer } from '@/reducers/HomeReducer';
 import { movieReducer } from '@/reducers/MovieReducer';
 import { listReducer } from '@/reducers/ListReducer';
+import { searchReducer } from '@/reducers/SearchReducer';
 
 export const rootReducer = combineReducers({
   error: errorReducer,
@@ -13,4 +14,5 @@ export const rootReducer = combineReducers({
   home: homeReducer,
   movie: movieReducer,
   list: listReducer,
+  search: searchReducer,
 });

@@ -7,10 +7,11 @@ const styles = StyleSheet.create({
   input: {
     borderBottomWidth: StyleSheet.hairlineWidth,
     marginVertical: 15,
-    paddingVertical: 5,
+    paddingVertical: 10,
     paddingHorizontal: 15,
     backgroundColor: Colors.black.lighter,
     borderRadius: 4,
+    color: Colors.black.primary,
   },
 });
 

@@ -8,17 +8,18 @@ export const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'center',
   },
-  poster: { width: window.width, height: 600 },
+  poster: { width: window.width, height: 550 },
   gradient: {
-    height: '30%',
+    height: '40%',
     width: '100%',
     alignItems: 'center',
-    paddingTop: 10,
+    justifyContent: 'flex-end',
+    paddingBottom: 20,
   },
   actions: {
     width: '70%',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: 20,
+    marginTop: 15,
   },
 });

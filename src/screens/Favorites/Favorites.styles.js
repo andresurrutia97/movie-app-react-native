@@ -8,20 +8,19 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.black.secondary,
     color: Colors.white,
-    paddingHorizontal: 20,
-    paddingTop: 60,
+    paddingHorizontal: 10,
+    paddingTop: 50,
   },
   title: {
-    marginBottom: 20,
+    marginBottom: 10,
   },
-  list: {
-    justifyContent: 'space-between',
-  },
+  list: {},
   poster: {
     alignItems: 'center',
     borderRadius: 6,
-    height: 230,
-    width: window.width / 2 - 30,
-    marginBottom: 20,
+    height: 160,
+    width: window.width / 3 - 15,
+    marginBottom: 10,
+    marginRight: 10,
   },
 });

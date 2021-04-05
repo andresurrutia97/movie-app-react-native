@@ -27,7 +27,7 @@ const fetchNowPlayingFailure = error => ({
   payload: error,
 });
 
-const fetchNowPlaying = () => async dispatch => {
+export const fetchNowPlaying = () => async dispatch => {
   dispatch(fetchNowPlayingStart());
   try {
     const { results } = await movieController.getNowPlaying();
@@ -61,7 +61,7 @@ const fetchPopularFailure = error => ({
   payload: error,
 });
 
-const fetchPopular = () => async dispatch => {
+export const fetchPopular = () => async dispatch => {
   dispatch(fetchPopularStart());
   try {
     const movies = await movieController.getPopularMovies();

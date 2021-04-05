@@ -1,26 +1,17 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import {
-  Text,
-  View,
-  Image,
-  ScrollView,
-  ImageBackground,
-  TouchableOpacity,
-} from 'react-native';
+import { Text, View, ScrollView, ImageBackground } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { styles } from './Movie.styles';
 import Genres from '@/components/Genres';
-import { ErrorView } from '@/components/ErrorView';
-import Spinner from '@/components/Spinner';
-import MovieAverage from '@/components/MovieAverage';
-import { TextStyles } from '@/theme';
+import { ErrorView, Spinner, IconButton, MovieAverage } from '@/components';
+import { TextStyles, Shared } from '@/theme';
 import { fetchMovie } from '@/actions/MovieActions';
 import { addMovie, removeMovie } from '@/actions/ListActions';
 import { getImageUrl } from '@/helpers/urls';
 import { ERRORS } from '@/constants';
-import { listIcon } from '@/assets';
+import { defaultPoster, addIcon, playIcon, addedIcon } from '@/assets';
 
 export const Movie = ({ route }) => {
   const dispatch = useDispatch();
@@ -40,35 +31,38 @@ export const Movie = ({ route }) => {
     return <ErrorView errors={[ERRORS.MAIN]} />;
   }
 
-  const backDrop = getImageUrl(movie.backdrop_path);
+  const backDrop = movie.backdrop_path
+    ? { uri: getImageUrl(movie.backdrop_path) }
+    : defaultPoster;
   const releaseDate = movie.release_date.split('-')[0];
   const isFavorite = list.find(el => el.id === movie.id);
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={Shared.contentContainerStyle}
+    >
       <ImageBackground
-        source={{ uri: backDrop }}
+        source={backDrop}
         style={styles.backDrop}
         accessibilityIgnoresInvertColors
+        imageStyle={styles.backDropImg}
       >
-        <TouchableOpacity
-          style={styles.fav}
-          onPress={() => {
-            isFavorite
-              ? dispatch(removeMovie(movie.id))
-              : dispatch(addMovie(movie));
-          }}
-        >
-          <Image
-            source={listIcon}
-            style={[
-              styles.favIcon,
-              isFavorite ? styles.added : styles.notAdded,
-            ]}
-            accessibilityIgnoresInvertColors
+        <View style={styles.actions}>
+          <IconButton
+            icon={isFavorite ? addedIcon : addIcon}
+            title="My list"
+            small
+            onPress={() => {
+              isFavorite
+                ? dispatch(removeMovie(movie.id))
+                : dispatch(addMovie(movie));
+            }}
           />
-        </TouchableOpacity>
+          <IconButton icon={playIcon} title="Watch" small />
+        </View>
       </ImageBackground>
+
       <View style={styles.content}>
         <Text style={styles.title}>
           {movie.title} <Text style={styles.releaseDate}>({releaseDate})</Text>
