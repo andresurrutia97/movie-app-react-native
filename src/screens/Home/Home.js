@@ -5,7 +5,7 @@ import { ScrollView } from 'react-native';
 
 import NowPlaying from './NowPlaying/NowPlaying';
 import { styles } from '@/screens/Home/Home.styles';
-import { fetchPopular } from '@/actions/HomeActions';
+import { fetchPopularIfNeeded } from '@/actions/HomeActions';
 import Carousel from '@/components/Carousel';
 import { NAVIGATION } from '@/constants';
 
@@ -14,7 +14,7 @@ export function Home() {
   const navigation = useNavigation();
 
   useEffect(() => {
-    dispatch(fetchPopular());
+    dispatch(fetchPopularIfNeeded());
   }, [dispatch]);
 
   const { popular, isFetchingPopular, popularError } = useSelector(

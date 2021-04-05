@@ -1,4 +1,5 @@
 import { MovieController } from '@/controllers';
+import { storage } from '@/storage';
 
 const movieController = new MovieController();
 
@@ -26,14 +27,23 @@ const fetchNowPlayingFailure = error => ({
   payload: error,
 });
 
-export const fetchNowPlaying = () => async dispatch => {
+const fetchNowPlaying = () => async dispatch => {
   dispatch(fetchNowPlayingStart());
   try {
     const { results } = await movieController.getNowPlaying();
     const nowPlaying = await movieController.getMovie(results[0].id);
+    await storage.setStringAsync(JSON.stringify(nowPlaying), 'nowPlaying');
     dispatch(fetchNowPlayingSuccess(nowPlaying));
   } catch (error) {
     dispatch(fetchNowPlayingFailure(error));
+  }
+};
+
+export const fetchNowPlayingIfNeeded = () => (dispatch, getState) => {
+  const { nowPlaying } = getState().home;
+
+  if (nowPlaying === null) {
+    dispatch(fetchNowPlaying());
   }
 };
 
@@ -51,12 +61,20 @@ const fetchPopularFailure = error => ({
   payload: error,
 });
 
-export const fetchPopular = () => async dispatch => {
+const fetchPopular = () => async dispatch => {
   dispatch(fetchPopularStart());
   try {
     const movies = await movieController.getPopularMovies();
     dispatch(fetchPopularSuccess(movies.results));
   } catch (error) {
     dispatch(fetchPopularFailure(error));
+  }
+};
+
+export const fetchPopularIfNeeded = () => (dispatch, getState) => {
+  const { popular } = getState().home;
+
+  if (popular.length === 0) {
+    dispatch(fetchPopular());
   }
 };
