@@ -1,4 +1,6 @@
-import { HttpClient } from '@/controllers';
+import { MovieController } from '@/controllers';
+
+const movieController = new MovieController();
 
 export const TYPES = {
   FETCH_NOW_PLAYING_START: 'FETCH_NOW_PLAYING_START',
@@ -27,8 +29,8 @@ const fetchNowPlayingFailure = error => ({
 export const fetchNowPlaying = () => async dispatch => {
   dispatch(fetchNowPlayingStart());
   try {
-    const movies = await HttpClient.get('/movie/now_playing');
-    const nowPlaying = await HttpClient.get(`/movie/${movies.results[0].id}`);
+    const { results } = await movieController.getNowPlaying();
+    const nowPlaying = await movieController.getMovie(results[0].id);
     dispatch(fetchNowPlayingSuccess(nowPlaying));
   } catch (error) {
     dispatch(fetchNowPlayingFailure(error));
@@ -52,7 +54,7 @@ const fetchPopularFailure = error => ({
 export const fetchPopular = () => async dispatch => {
   dispatch(fetchPopularStart());
   try {
-    const movies = await HttpClient.get('/movie/popular');
+    const movies = await movieController.getPopularMovies();
     dispatch(fetchPopularSuccess(movies.results));
   } catch (error) {
     dispatch(fetchPopularFailure(error));

@@ -1,8 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, ScrollView, Text, Image, View } from 'react-native';
+import {
+  StyleSheet,
+  ScrollView,
+  Text,
+  Image,
+  View,
+  TouchableOpacity,
+} from 'react-native';
 
-import { Colors } from '@/theme/Colors';
+import { Colors, TextStyles } from '@/theme';
 import Spinner from '@/components/Spinner';
 import { ErrorView } from '@/components/ErrorView';
 import { getImageUrl } from '@/helpers/urls';
@@ -22,33 +29,36 @@ const styles = StyleSheet.create({
   },
   title: {
     color: Colors.white,
-    fontWeight: 'bold',
-    fontSize: 16,
     marginBottom: 15,
   },
 });
 
-const Carousel = ({ movies, isFetching, error, title }) => {
+const Carousel = ({ movies, isFetching, error, title, goToMovie }) => {
   if (isFetching) {
     return <Spinner />;
   }
   if (error) {
-    return <ErrorView small errors={[ERRORS.main]} />;
+    return <ErrorView small errors={[ERRORS.MAIN]} />;
   }
 
   return (
     <View style={styles.container}>
-      {title && <Text style={styles.title}>{title}</Text>}
+      {title && <Text style={[styles.title, TextStyles.title]}>{title}</Text>}
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         {movies &&
           movies.map(movie => (
-            <View style={styles.movieItem} key={movie.id}>
-              <Image
-                source={{ uri: getImageUrl(movie.poster_path) }}
-                style={styles.poster}
-                accessibilityIgnoresInvertColors
-              />
-            </View>
+            <TouchableOpacity
+              key={movie.id}
+              onPress={() => goToMovie(movie.id)}
+            >
+              <View style={styles.movieItem}>
+                <Image
+                  source={{ uri: getImageUrl(movie.poster_path) }}
+                  style={styles.poster}
+                  accessibilityIgnoresInvertColors
+                />
+              </View>
+            </TouchableOpacity>
           ))}
       </ScrollView>
     </View>

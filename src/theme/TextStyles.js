@@ -9,6 +9,10 @@ export const TextStyles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '400',
   },
+  smallText: {
+    fontSize: 14,
+    fontWeight: '400',
+  },
   label: {
     fontSize: 16,
     fontWeight: '700',

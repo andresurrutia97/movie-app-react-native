@@ -13,7 +13,7 @@ import { fetchNowPlaying } from '@/actions/HomeActions';
 import { getImageUrl } from '@/helpers/urls';
 import { ERRORS } from '@/constants';
 
-const NowPlaying = ({ navigation }) => {
+const NowPlaying = ({ goToMovie }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -28,14 +28,8 @@ const NowPlaying = ({ navigation }) => {
     return <Spinner />;
   }
   if (nowPlayingError) {
-    return <ErrorView errors={[ERRORS.main]} small />;
+    return <ErrorView errors={[ERRORS.MAIN]} small />;
   }
-
-  const goToMovie = id => {
-    navigation.navigate('Movie', {
-      movieId: id,
-    });
-  };
 
   const poster = getImageUrl(nowPlaying.poster_path);
 
@@ -48,13 +42,13 @@ const NowPlaying = ({ navigation }) => {
         >
           <Genres genres={nowPlaying.genres} />
           <View style={styles.actions}>
+            <IconButton icon="add" title="My list" />
+            <IconButton icon="play" title="Play" />
             <IconButton
-              icon="list"
-              title="My List"
+              icon="info"
+              title="Info"
               onPress={() => goToMovie(nowPlaying.id)}
             />
-            <IconButton icon="list" title="Play" />
-            <IconButton icon="list" title="Info" />
           </View>
         </LinearGradient>
       </View>
@@ -63,7 +57,7 @@ const NowPlaying = ({ navigation }) => {
 };
 
 NowPlaying.propTypes = {
-  navigation: PropTypes.shape().isRequired,
+  goToMovie: PropTypes.func,
 };
 
 export default NowPlaying;

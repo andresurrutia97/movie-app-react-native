@@ -1,4 +1,3 @@
-import { useTheme } from '@react-navigation/native';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { StyleSheet, TextInput } from 'react-native';

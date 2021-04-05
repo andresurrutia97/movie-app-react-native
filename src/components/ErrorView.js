@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Colors } from '@/theme';
+
+import { Colors, TextStyles } from '@/theme';
 
 const styles = StyleSheet.create({
   container: {
@@ -10,8 +11,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: Colors.black.secondary,
   },
-  error: { fontSize: 20 },
-  small: { fontSize: 16 },
 });
 
 export function ErrorView({ errors, small }) {
@@ -25,7 +24,7 @@ export function ErrorView({ errors, small }) {
         <Text
           key={error}
           style={[
-            small ? styles.small : styles.error,
+            small ? TextStyles.text : TextStyles.title,
             { color: Colors.pink.primary },
           ]}
         >
