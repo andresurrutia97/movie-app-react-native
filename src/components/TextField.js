@@ -1,4 +1,3 @@
-import { useTheme } from '@react-navigation/native';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { StyleSheet, TextInput } from 'react-native';
@@ -8,10 +7,11 @@ const styles = StyleSheet.create({
   input: {
     borderBottomWidth: StyleSheet.hairlineWidth,
     marginVertical: 15,
-    paddingVertical: 5,
+    paddingVertical: 10,
     paddingHorizontal: 15,
     backgroundColor: Colors.black.lighter,
     borderRadius: 4,
+    color: Colors.black.primary,
   },
 });
 

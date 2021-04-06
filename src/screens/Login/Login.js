@@ -1,4 +1,3 @@
-import { useTheme } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { View, ImageBackground, Text } from 'react-native';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
@@ -12,7 +11,6 @@ import { ShadowStyles } from '@/theme';
 import image from '@/assets/img/neonBg.jpeg';
 
 export function Login() {
-  const { colors } = useTheme();
   const dispatch = useDispatch();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');

@@ -11,7 +11,8 @@ export const theme = {
       text: '#212121',
       border: '#212121',
       activeTab: '#1976D2',
-      inactiveTab: '#757575',
+      inactiveTab: '#d1d1d1',
+      background: '#000',
     },
   },
   dark: {
@@ -25,6 +26,7 @@ export const theme = {
       border: '#FFFFFF',
       activeTab: '#4FC3F7',
       inactiveTab: '#FFFFFF',
+      background: '#000',
     },
   },
 };

@@ -7,12 +7,12 @@ const Stack = createNativeStackNavigator();
 
 export function ProfileNavigator() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name={NAVIGATION.profile}
-        component={Profile}
-        options={{ headerLargeTitle: true }}
-      />
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Stack.Screen name={NAVIGATION.profile} component={Profile} />
     </Stack.Navigator>
   );
 }
