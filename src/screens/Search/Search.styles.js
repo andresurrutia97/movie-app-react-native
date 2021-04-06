@@ -1,12 +1,19 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 import { Colors } from '@/theme';
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 40,
     paddingHorizontal: 10,
     backgroundColor: Colors.black.secondary,
+    ...Platform.select({
+      ios: {
+        paddingTop: 40,
+      },
+      android: {
+        paddingTop: 5,
+      },
+    }),
   },
   list: {
     flexDirection: 'row',

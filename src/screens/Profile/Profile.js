@@ -11,9 +11,8 @@ import { persistor } from '@/store';
 export function Profile() {
   const dispatch = useDispatch();
 
-  const logoutUser = () => {
+  const logoutUser = async () => {
     dispatch(logout());
-    persistor.purge();
   };
 
   return (

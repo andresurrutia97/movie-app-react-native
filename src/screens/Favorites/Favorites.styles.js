@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet, Dimensions, Platform } from 'react-native';
 import { Colors } from '@/theme';
 
 const window = Dimensions.get('window');
@@ -9,12 +9,18 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.black.secondary,
     color: Colors.white,
     paddingHorizontal: 10,
-    paddingTop: 50,
+    ...Platform.select({
+      ios: {
+        paddingTop: 55,
+      },
+      android: {
+        paddingTop: 15,
+      },
+    }),
   },
   title: {
     marginBottom: 10,
   },
-  list: {},
   poster: {
     alignItems: 'center',
     borderRadius: 6,

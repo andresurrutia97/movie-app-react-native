@@ -74,7 +74,7 @@ export const fetchPopular = () => async dispatch => {
 export const fetchPopularIfNeeded = () => (dispatch, getState) => {
   const { popular } = getState().home;
 
-  if (popular.length === 0) {
+  if (!popular) {
     dispatch(fetchPopular());
   }
 };

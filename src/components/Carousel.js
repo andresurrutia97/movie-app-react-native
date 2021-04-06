@@ -41,7 +41,7 @@ const Carousel = ({ movies, isFetching, error, title, goToMovie }) => {
   }
 
   return (
-    movies.length !== 0 && (
+    movies?.length !== 0 && (
       <View style={styles.container}>
         {title && <Text style={[styles.title, TextStyles.title]}>{title}</Text>}
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>

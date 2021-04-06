@@ -23,7 +23,6 @@ export const Favorites = () => {
     <View style={styles.container}>
       <Text style={[TextStyles.title, styles.title]}>My List</Text>
       <FlatList
-        columnWrapperStyle={styles.list}
         data={list}
         renderItem={({ item }) => (
           <TouchableOpacity key={item.id} onPress={() => goToMovie(item.id)}>
